@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment folder
+photo_env/
+
+# Logs and temporary files
+*.log
+.DS_Store
+
+# VS Code project settings
+.vscode/
