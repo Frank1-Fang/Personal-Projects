@@ -81,6 +81,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.btn_output = QtWidgets.QPushButton("Browse...")
         self.btn_dup = QtWidgets.QPushButton("Browse...")
         self.run_btn = QtWidgets.QPushButton("Run")
+        self.review_btn = QtWidgets.QPushButton("Review Duplicates") # Review duplicates
+        self.review_btn.setEnabled(False)
         self.progress = QtWidgets.QProgressBar()
         self.progress.setTextVisible(False)
         self.log_view = QtWidgets.QTextEdit()
@@ -109,6 +111,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         btn_bar = QtWidgets.QHBoxLayout()
         btn_bar.addWidget(self.run_btn)
+        btn_bar.addWidget(self.review_btn) # Review button
         btn_bar.addStretch(1)
         btn_bar.addWidget(self.progress)
 
@@ -126,7 +129,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self.btn_dup.clicked.connect(lambda: self.pick_dir(self.dup_edit))
         self.run_btn.clicked.connect(self.start_run)
 
+        self.review_btn.clicked.connect(self.open_review) # Open review
+
         self.worker = None  # type: OrganizeWorker | None
+
+        self.last_groups = []
 
     # 选择文件夹
     def pick_dir(self, line_edit: QtWidgets.QLineEdit):
@@ -224,10 +231,20 @@ class MainWindow(QtWidgets.QMainWindow):
     @QtCore.Slot(list)
     def on_review_ready(self, groups: list):
         # 处理完成后收到分组数据，弹出查看对话框
-        if not groups:
+        self.last_groups = groups
+        if groups:
+            self.log_view.append(f"\n{len(groups)} duplicate groups detected."
+                                 f"\nClick 'Review Duplicates' to inspect.")
+            self.review_btn.setEnabled(True)  # 🆕 启用按钮
+        else:
+            self.log_view.append("\nNo duplicates found.")
+            self.review_btn.setEnabled(False)
+
+    def open_review(self):
+        if not self.last_groups:
             QtWidgets.QMessageBox.information(self, "No Duplicates", "No duplicate groups were found.")
             return
-        dlg = ReviewDialog(groups, self)
+        dlg = ReviewDialog(self.last_groups, self)
         dlg.exec()
 
     @QtCore.Slot(str)
