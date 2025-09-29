@@ -61,15 +61,18 @@ A PySide6-based GUI version is available. It allows non-technical users to selec
 ```bash
 python gui_app.py
 ```
-GUI Features:
-- Select input/output/duplicate folders via file dialog
-- Start organizing with a single click
-- Real-time log display in the interface
-- Built-in error handling (e.g., folder not selected)
 
-No need to type paths or commands — ideal for casual or beginner users.
+![Overview](Screenshot1.png)
 
+You can manually select the paths for the input, output, and duplicate directories using the "Browse..." button, and then start the process directly by clicking the "Run" button.
 
+![Output](Screenshot2.png)
+
+After you click the "Run" button, the program will automatically detect duplicate photos in your input directory based on MD5 and pHash. If multiple duplicates are found, the program will keep the earliest photo (by creation time) and copy it to the output directory, while copying the remaining duplicates to the duplicate directory. At the same time, the program will generate logs that show the original and renamed file names, along with statistics such as the total number of duplicate photos detected.
+
+![DuplicateReview](Screenshot3.png)
+
+After the program finishes running, you can click the "Review Duplicates" button to check all detected duplicate photos, in order to prevent the program from mistakenly identifying non-duplicate photos as duplicates.
 
 ### 4. Output structure
 Organized photos will be placed into folders by year and month, with meaningful filenames:
