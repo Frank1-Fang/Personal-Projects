@@ -5,7 +5,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from photo_organizer.metadata import get_photo_datetime
 
 # 加载一个有 EXIF 的图片，另存为 PNG（Pillow 不保留 EXIF）
-jpg_path = Path("sample_data/input/IMG_20250701_114958.jpg")
+jpg_path = Path("sample_data/input/IMG_20250928_164432.jpg")
 png_path = Path("sample_data/input/no_exif_test.png")
 
 # 转换为 PNG

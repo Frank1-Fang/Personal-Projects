@@ -17,27 +17,14 @@ A Python tool to organize photos by creation date, detect duplicates using MD5 a
 
 ## Project Structure
 ```
-├── photo_env
-├── sample_data
-│   ├── duplicates
-│   ├── input
-│   └── output
-├── script
-│   └── run_organize.py
-├── src
-│   └── photo_organizer
-│       ├── digest.py
-│       ├── __init__.py
-│       ├── metadata.py
-│       ├── organizer.py
-│       ├── __pycache__
-│       └── renamer.py
-├── tests
-│  ├── test_digest.py
-│  ├── test_exif.py
-│  └── test_fallback_png.py
-│
-└── gui_app.py
+PhotoOrganizer/
+├── src/            # Core logic: EXIF, hashing, renaming, organizing
+├── script/         # CLI entry
+├── gui_app.py      # PySide6 GUI
+├── sample_data/    # Example input/output files
+├── tests/          # Manual test scripts
+├── requirements.txt
+└── README.md
 ```
 ---
 
@@ -72,9 +59,9 @@ Organized photos will be placed into folders by year and month, with meaningful 
 ```
 output/
 ├── 2025/
-│   └── 07/
-│       ├── 20250701-dcim-img_20250701.jpg
-│       └── 20250703-dcim-img_20250703.jpg
+│   └── 09/
+│       ├── 20250928-dcim-img_20250928_164432.jpg
+│       └── 20250929-screenshot-屏幕截图2025-09-28165416.png
 ```
 Duplicate files will be moved to:
 ```
@@ -141,12 +128,10 @@ This project relies on the following Python packages:
 - pillow 11.3.0
 - pluggy 1.6.0
 - Pygments 2.19.2
+- PySide6 6.9.2
+- PySide6_Addons 6.9.2
 - PyWavelets 1.8.0
 - scipy 1.16.0
+- shiboken6 6.9.2
 - tqdm 4.67.1
-
-Use the following command to install all dependencies from requirements.txt:
-```bash
-pip install -r requirements.txt
-```
 
