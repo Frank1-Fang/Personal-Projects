@@ -54,7 +54,24 @@ python script/run_organize.py \
 The input directory must exist and contain supported image files (`.jpg`, `.jpeg`, `.png`, etc.).
 The output and duplicate directories will be created automatically if they don't exist.
 
-### 3. Output structure
+### 3. Run with Graphical User Interface (GUI)
+A PySide6-based GUI version is available. It allows non-technical users to select folders and run the organizer with a simple interface.
+
+**Launch the GUI:**
+```bash
+python gui_app.py
+```
+GUI Features:
+- Select input/output/duplicate folders via file dialog
+- Start organizing with a single click
+- Real-time log display in the interface
+- Built-in error handling (e.g., folder not selected)
+
+No need to type paths or commands — ideal for casual or beginner users.
+
+
+
+### 4. Output structure
 Organized photos will be placed into folders by year and month, with meaningful filenames:
 ```
 output/
