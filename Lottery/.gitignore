@@ -1,0 +1,9 @@
+# 虚拟环境（venv）
+venv/
+ENV/
+env/
+.venv/
+
+# Excel / 临时输出
+*.xlsx
+*.xls
