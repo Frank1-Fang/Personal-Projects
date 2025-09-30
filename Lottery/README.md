@@ -93,7 +93,7 @@ bg_layout.setContentsMargins(left, top, right, bottom)
 ```
 Lottery/
 ├── choujiang.py        # Main program
-├── backgnd.jpg         # Background image
+├── background.jpg         # Background image
 ├── requirements.txt    # Dependencies
 └── README.md           # Documentation
 ```
